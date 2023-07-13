@@ -14,12 +14,16 @@ function App() {
     .then(storeData => setStores(storeData))
   }, [])
 
+  const onAddStore = (newStore) => {
+    setStores([...stores, newStore]);
+  }
+
   return (
     <div className="main-container">
       <img src="/images/bobsburgers.png" />
       <h1>Neighbor Stores</h1>
       <Search />
-      <NewStoreForm />
+      <NewStoreForm onAddStore={onAddStore}/>
       <StoreList stores={stores}/>
     </div>
   );
